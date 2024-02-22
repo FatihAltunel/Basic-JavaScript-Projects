@@ -39,7 +39,8 @@ body{
     font-weight: bold;
     padding-top: 20px;
 }
-.reset-score-button{
+.reset-score-button,
+.auto-play-button{
     background-color: white;
     color: black;
     border: none;
@@ -50,6 +51,10 @@ body{
     cursor: pointer;
 }
 .reset-score-button:hover{
+    background-color: black;
+    color: white;
+}
+.auto-play-button:hover{
     background-color: black;
     color: white;
 }

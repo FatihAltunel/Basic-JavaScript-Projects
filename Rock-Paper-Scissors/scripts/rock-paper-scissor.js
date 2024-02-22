@@ -1,3 +1,5 @@
+document.querySelector('.auto-play-button').innerHTML='Auto Play';
+
 let score=JSON.parse(localStorage.getItem('score')) || {
     Win:0,
     Lose:0,
@@ -80,6 +82,25 @@ else if(result==='You lose.'){
 localStorage.setItem('score', JSON.stringify(score));
 updateScore();
 typeResultAndMoves(result,playerMove,computerMove);
+}
+
+let isAutoPlaying=false;
+let intervalID='';
+
+
+function autoPlay(){
+    if(!isAutoPlaying){
+        intervalID = setInterval(function(){
+            const playerMove = pickComputerMove();
+            playGame(playerMove); 
+        },1000);
+        isAutoPlaying=true;
+        document.querySelector('.auto-play-button').innerHTML='Stop Auto Playing';
+    } else{
+        isAutoPlaying=false;
+        clearInterval(intervalID);
+        document.querySelector('.auto-play-button').innerHTML='Auto Play';
+    }
 }
 
 function subscribe(buttonClass){
